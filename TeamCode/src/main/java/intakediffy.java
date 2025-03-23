@@ -1,9 +1,13 @@
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.rowanmcalpin.nextftc.core.Subsystem;
 import com.rowanmcalpin.nextftc.core.command.Command;
+import com.rowanmcalpin.nextftc.core.command.groups.ParallelGroup;
 import com.rowanmcalpin.nextftc.ftc.OpModeData;
+import com.rowanmcalpin.nextftc.ftc.gamepad.GamepadEx;
 import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToPosition;
 import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToSeperatePositions;
+import com.rowanmcalpin.nextftc.ftc.hardware.ServoToPosition;
 
 import java.util.List;
 import java.util.Map;
@@ -73,6 +77,26 @@ public class intakediffy extends Subsystem {
                 Map.of(
                         IntakeDiffyLeft, 0.5,
                         IntakeDiffyRight, 0.5
+                ),
+                this
+        );
+    }
+    public Command rotateright() {
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        IntakeDiffyLeft,IntakeDiffyLeft.getPosition()+0.03,
+                        IntakeDiffyRight,IntakeDiffyRight.getPosition()-0.03
+
+                ),
+                this
+        );
+    }
+    public Command rotateleft() {
+        return new MultipleServosToSeperatePositions(
+                Map.of(
+                        IntakeDiffyLeft,IntakeDiffyLeft.getPosition()-0.03,
+                        IntakeDiffyRight,IntakeDiffyRight.getPosition()+0.03
+
                 ),
                 this
         );
