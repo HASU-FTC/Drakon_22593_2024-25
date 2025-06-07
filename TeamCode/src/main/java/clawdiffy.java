@@ -1,28 +1,24 @@
-import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.rowanmcalpin.nextftc.core.Subsystem;
 import com.rowanmcalpin.nextftc.core.command.Command;
-import com.rowanmcalpin.nextftc.core.command.groups.ParallelGroup;
 import com.rowanmcalpin.nextftc.ftc.OpModeData;
-import com.rowanmcalpin.nextftc.ftc.gamepad.GamepadEx;
 import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToPosition;
 import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToSeperatePositions;
-import com.rowanmcalpin.nextftc.ftc.hardware.ServoToPosition;
 
 import java.util.List;
 import java.util.Map;
 
-public class intakediffy extends Subsystem {
-    public static final intakediffy INSTANCE = new intakediffy();
-    private intakediffy(){ }
+public class clawdiffy extends Subsystem {
+    public static final clawdiffy INSTANCE = new clawdiffy();
+    private clawdiffy(){ }
     public Servo IntakeDiffyLeft;
     public Servo IntakeDiffyRight;
-    public String name1 = "LeftIntakeDiffy";
-    public String name2 = "RightIntakeDiffy";
+    public String name1 = "leftdiffyservo";
+    public String name2 = "rightdiffyservo";
 
 
     //Setting Diffy Position to Up, Down and Middle
-    public Command intakediffyup(){
+    public Command diffyup(){
         return new MultipleServosToPosition(
                 List.of(
                         IntakeDiffyLeft,
@@ -32,7 +28,7 @@ public class intakediffy extends Subsystem {
                 this
         );
     }
-    public Command intakediffydown(){
+    public Command diffydown(){
         return new MultipleServosToPosition(
                 List.of(
                         IntakeDiffyLeft,
@@ -42,7 +38,7 @@ public class intakediffy extends Subsystem {
                 this
         );
     }
-    public Command intakediffymiddle(){
+    public Command diffymiddle(){
         return new MultipleServosToPosition(
                 List.of(
                         IntakeDiffyLeft,
@@ -53,7 +49,7 @@ public class intakediffy extends Subsystem {
         );
     }
     //Rotating Diffy Position to Right, Left, and Centred
-    public Command intakediffyleft(){
+    public Command turndiffyclockwise(){
         return new MultipleServosToSeperatePositions(
                 Map.of(
                         IntakeDiffyLeft, 0.99,
@@ -63,7 +59,7 @@ public class intakediffy extends Subsystem {
         );
     }
 
-    public Command intakediffyright(){
+    public Command turndiffyanticlockwise(){
         return new MultipleServosToSeperatePositions(
                 Map.of(
                         IntakeDiffyLeft, 0.01,
@@ -72,7 +68,7 @@ public class intakediffy extends Subsystem {
                 this
         );
     }
-    public Command intakediffycentre(){
+    public Command turndiffycentre(){
         return new MultipleServosToSeperatePositions(
                 Map.of(
                         IntakeDiffyLeft, 0.5,
@@ -81,7 +77,7 @@ public class intakediffy extends Subsystem {
                 this
         );
     }
-    public Command rotateright() {
+    public Command rotateclockwise() {
         return new MultipleServosToSeperatePositions(
                 Map.of(
                         IntakeDiffyLeft,IntakeDiffyLeft.getPosition()+0.03,
@@ -91,7 +87,7 @@ public class intakediffy extends Subsystem {
                 this
         );
     }
-    public Command rotateleft() {
+    public Command rotateanticlockwise() {
         return new MultipleServosToSeperatePositions(
                 Map.of(
                         IntakeDiffyLeft,IntakeDiffyLeft.getPosition()-0.03,
