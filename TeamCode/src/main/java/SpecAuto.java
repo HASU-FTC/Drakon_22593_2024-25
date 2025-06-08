@@ -25,7 +25,7 @@ public class SpecAuto extends PedroOpMode {
 
     // Robot Co-Ordinate Positions
     //preload score
-    private final Pose startpose = new Pose(10.096551724137932,67.0344827586207, Math.toRadians(0));
+    private final Pose startpose = new Pose(9.26896551724138,63.55862068965517, Math.toRadians(0));
     private final Pose preloadscorepose = new Pose(37.90344827586207,67.36551724137931, Math.toRadians(0));
 
     //specimen push ready
@@ -252,7 +252,7 @@ public class SpecAuto extends PedroOpMode {
                         intakeclaw.INSTANCE.intakeclawopen()
                 )
         );
-    };
+    }
 
     @Override
     public void onInit(){
