@@ -16,8 +16,8 @@ public class pivot extends Subsystem {
     public MotorGroup pivotmotors;
 
     public PIDFController ArmPID = new PIDFController(0.005,0.0,0.0,new StaticFeedforward(0.0));
-    public String name1 = "leftarm";
-    public String name2 = "rightarm";
+    public String name1 = "pivotleft";
+    public String name2 = "pivotright";
 
     public Command pivotup(){
         return new RunToPosition(pivotmotors,
